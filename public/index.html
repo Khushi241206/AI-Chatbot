@@ -58,9 +58,8 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       background: radial-gradient(ellipse 90% 70% at 50% -5%, #2d1060 0%, var(--dark) 65%);
-      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
-    #landing.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    #landing.hidden { display: none; }
 
     /* Decorative orbs */
     .orb {
@@ -540,7 +539,10 @@ voices = synth.getVoices();
 
 // ── Landing ─────────────────────────────────────────────────────────────
 function startChat() {
-  document.getElementById('landing').classList.add('hidden');
+  const landing = document.getElementById('landing');
+  landing.style.opacity = '0';
+  landing.style.transition = 'opacity 0.4s ease';
+  setTimeout(() => landing.classList.add('hidden'), 400);
 }
 
 // ── Sidebar ──────────────────────────────────────────────────────────────
